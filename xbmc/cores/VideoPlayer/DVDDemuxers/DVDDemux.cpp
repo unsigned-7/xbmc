@@ -17,7 +17,14 @@ std::string CDemuxStreamAudio::GetStreamType()
     strInfo = "AC3 ";
     break;
   case AV_CODEC_ID_EAC3:
-    strInfo = "DD+ ";
+    if (codec_fourcc == MKTAG('e', 'c', '+', '3'))
+    {
+      strInfo = "DD+ ATMOS ";
+    }
+    else
+    {
+      strInfo = "DD+ ";
+    }
     break;
   case AV_CODEC_ID_DTS:
   {
